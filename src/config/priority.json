@@ -1,0 +1,111 @@
+{
+  "version": 1,
+
+  "max_matches_selected": 40,
+
+  "country_priority": {
+
+    "Japan": 1,
+    "Australia": 1,
+
+    "South-Korea": 2,
+    "Norway": 2,
+    "Sweden": 2,
+    "Denmark": 2,
+    "Finland": 2,
+
+    "Germany": 3,
+    "England": 3,
+    "Spain": 3,
+    "Italy": 3,
+    "France": 3,
+    "Netherlands": 3,
+    "Portugal": 3,
+    "Belgium": 3,
+    "Switzerland": 3,
+    "Austria": 3,
+
+    "Brazil": 4,
+    "Argentina": 4,
+    "USA": 4,
+    "Mexico": 4,
+    "Colombia": 4,
+    "Chile": 4,
+    "Uruguay": 4,
+    "Paraguay": 4,
+    "Peru": 4,
+
+    "Poland": 5,
+    "Czech-Republic": 5,
+    "Hungary": 5,
+    "Romania": 5,
+    "Croatia": 5,
+    "Serbia": 5,
+    "Slovenia": 5,
+    "Slovakia": 5,
+    "Ukraine": 5,
+    "Russia": 5,
+
+    "Turkey": 6,
+    "Greece": 6,
+    "Israel": 6,
+    "Iran": 6,
+    "Saudi-Arabia": 6,
+    "Qatar": 6,
+    "United-Arab-Emirates": 6,
+
+    "South-Africa": 7,
+    "Morocco": 7,
+    "Egypt": 7,
+    "Tunisia": 7,
+    "Algeria": 7,
+
+    "Canada": 8,
+    "New-Zealand": 8,
+
+    "Costa-Rica": 9,
+    "Honduras": 9,
+    "Guatemala": 9,
+    "Panama": 9,
+    "El-Salvador": 9,
+
+    "India": 10,
+    "China": 10,
+    "Malaysia": 10,
+    "Vietnam": 10,
+    "Thailand": 10,
+
+    "Indonesia": 12,
+    "Cambodia": 12,
+    "Laos": 12,
+    "Nepal": 12,
+
+    "Gambia": 13,
+    "Ethiopia": 13,
+    "Somalia": 13,
+    "Rwanda": 13,
+    "Mauritania": 13
+
+  },
+
+  "international_priority": {
+
+    "World Cup": 1,
+    "Euro Championship": 1,
+    "Copa America": 1,
+
+    "UEFA Champions League": 2,
+    "CONMEBOL Libertadores": 2,
+    "AFC Champions League": 2,
+
+    "UEFA Europa League": 3,
+    "CONMEBOL Sudamericana": 3,
+    "CAF Champions League": 3,
+    "CONCACAF Champions League": 3,
+
+    "UEFA Nations League": 4,
+    "Gold Cup": 4,
+    "Asian Cup": 4,
+    "Africa Cup of Nations": 4
+  }
+}

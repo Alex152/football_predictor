@@ -1,0 +1,3 @@
+from src.collectors.fixtures_collector import collect_week_fixtures
+
+collect_week_fixtures()
