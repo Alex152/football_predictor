@@ -11,11 +11,9 @@ def analyze_match(fixture_id, home_team_id, away_team_id, league_id, season):
 
     cursor.execute(
         """
-
         SELECT goals_for, goals_against, matches_played
         FROM team_stats
         WHERE team_id=? AND league_id=? AND season=?
-
         """,
         (home_team_id, league_id, season)
     )
@@ -24,11 +22,9 @@ def analyze_match(fixture_id, home_team_id, away_team_id, league_id, season):
 
     cursor.execute(
         """
-
         SELECT goals_for, goals_against, matches_played
         FROM team_stats
         WHERE team_id=? AND league_id=? AND season=?
-
         """,
         (away_team_id, league_id, season)
     )
@@ -48,7 +44,6 @@ def analyze_match(fixture_id, home_team_id, away_team_id, league_id, season):
 
     score = (home_attack - away_def) - (away_attack - home_def)
 
-    # marcar partido como analizado
     mark_match_analyzed(fixture_id)
 
     return score

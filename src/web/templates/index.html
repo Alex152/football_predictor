@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Football Predictor</title>
+</head>
+
+<body>
+
+<h1>Football Predictions</h1>
+
+<table border="1">
+
+<tr>
+<th>Home</th>
+<th>Away</th>
+<th>Score</th>
+<th>Date</th>
+<th>Time</th>
+</tr>
+
+{% for p in predictions %}
+
+<tr>
+<td>{{ p.home }}</td>
+<td>{{ p.away }}</td>
+<td>{{ p.score }}</td>
+<td>{{ p.date }}</td>
+<td>{{ p.time }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

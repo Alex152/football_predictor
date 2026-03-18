@@ -12,16 +12,17 @@ def get_match_team_ids(fixture_id):
 
     cursor.execute(
         """
-
         SELECT
-        home_team_id,
-        away_team_id,
-        league_id,
-        season
-
+            home_team_id,
+            away_team_id,
+            league_id,
+            season,
+            date,
+            time,
+            country,
+            league_name
         FROM matches
         WHERE fixture_id=?
-
         """,
         (fixture_id,)
     )
@@ -37,7 +38,11 @@ def get_match_team_ids(fixture_id):
         "home_team_id": row[0],
         "away_team_id": row[1],
         "league_id": row[2],
-        "season": row[3]
+        "season": row[3],
+        "date": row[4],
+        "time": row[5],
+        "country": row[6],
+        "league_name": row[7]
     }
 
 
@@ -48,12 +53,24 @@ def save_prediction(fixture_id, score):
 
     cursor.execute(
         """
+        SELECT id FROM predictions
+        WHERE fixture_id=?
+        """,
+        (fixture_id,)
+    )
 
+    existing = cursor.fetchone()
+
+    if existing:
+        print("Prediction already exists")
+        conn.close()
+        return
+
+    cursor.execute(
+        """
         INSERT INTO predictions
         (fixture_id, score, created_at)
-
         VALUES (?, ?, datetime('now'))
-
         """,
         (fixture_id, score)
     )
@@ -73,10 +90,15 @@ def run_analysis(limit=40):
         fixture_id = match["fixture_id"]
 
         print(
-            "Analyzing:",
+            "\nAnalyzing:",
             match["home_team"],
             "vs",
-            match["away_team"]
+            match["away_team"],
+            "| Date:", match["date"],
+            "| Time:", match["time"],
+            "| Country:", match["country"],
+            "| Ligue:", match["league_name"]
+
         )
 
         ids = get_match_team_ids(fixture_id)

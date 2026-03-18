@@ -1,15 +1,19 @@
-from src.analyzer.match_analyzer import MatchAnalyzer
+from src.core.analyzer_engine import run_analysis
+
 
 def main():
 
-    analyzer = MatchAnalyzer()
+    print("\n============================")
+    print(" FOOTBALL ANALYSIS ENGINE ")
+    print("============================\n")
 
-    print("Iniciando análisis de partidos...")
+    run_analysis(limit=40)
 
-    analyzer.analyze_all_matches()
-
-    print("Análisis completado")
+    print("\nAnalysis completed\n")
 
 
 if __name__ == "__main__":
     main()
+
+# se ejecuta con:
+# python scripts/run_analyzer.py

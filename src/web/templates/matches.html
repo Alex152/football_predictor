@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Matches</title>
+</head>
+
+<body>
+
+<h1>Football Matches</h1>
+
+<table border="1">
+
+<tr>
+<th>League</th>
+<th>Country</th>
+<th>Home</th>
+<th>Away</th>
+<th>Date</th>
+<th>Time</th>
+</tr>
+
+{% for m in matches %}
+
+<tr>
+<td>{{m.league}}</td>
+<td>{{m.country}}</td>
+<td>{{m.home}}</td>
+<td>{{m.away}}</td>
+<td>{{m.date}}</td>
+<td>{{m.time}}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

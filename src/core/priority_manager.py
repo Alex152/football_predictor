@@ -1,6 +1,5 @@
 import json
 
-
 PRIORITY_FILE = "src/config/priority.json"
 
 
@@ -14,21 +13,16 @@ def get_country_priority(country):
 
     priorities = load_priorities()
 
-    countries = priorities["countries_priority"]
+    countries = priorities.get("country_priority", {})
 
-    if country in countries:
-        return countries.index(country)
-
-    return len(countries) + 10
+    # devolver prioridad del país
+    return countries.get(country, 50)
 
 
 def get_league_priority(country, league):
 
     priorities = load_priorities()
 
-    leagues = priorities["leagues_priority"].get(country, [])
+    leagues = priorities.get("leagues_priority", {}).get(country, {})
 
-    if league in leagues:
-        return leagues.index(league)
-
-    return len(leagues) + 10
+    return leagues.get(league, 10)

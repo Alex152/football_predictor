@@ -39,26 +39,42 @@ def mark_match_analyzed(fixture_id):
     conn.close()
 
 
-def get_candidate_matches():
+def get_candidate_matches(start_date=None, end_date=None):
 
     conn = sqlite3.connect(DATABASE_PATH)
     cursor = conn.cursor()
 
-    cursor.execute("""
+    if start_date and end_date:
 
-    SELECT
-    fixture_id,
-    date,
-    time,
-    league_id,
-    league_name,
-    country,
-    home_team,
-    away_team
+        cursor.execute("""
+        SELECT
+        fixture_id,
+        date,
+        time,
+        league_id,
+        league_name,
+        country,
+        home_team,
+        away_team
 
-    FROM matches
+        FROM matches
+        WHERE date BETWEEN ? AND ?
+        """, (start_date, end_date))
 
-    """)
+    else:
+
+        cursor.execute("""
+        SELECT
+        fixture_id,
+        date,
+        time,
+        league_id,
+        league_name,
+        country,
+        home_team,
+        away_team
+        FROM matches
+        """)
 
     rows = cursor.fetchall()
 
@@ -81,11 +97,9 @@ def get_candidate_matches():
 
         }
 
-        # evitar partidos ya terminados
         if match_already_finished(match["date"], match["time"]):
             continue
 
-        # evitar partidos ya analizados
         if match_already_analyzed(match["fixture_id"]):
             continue
 
@@ -96,19 +110,19 @@ def get_candidate_matches():
             match["league_name"]
         )
 
-        priority_score = country_score * 10 + league_score
+        priority_score = -(country_score * 10 + league_score)
 
         match["priority"] = priority_score
 
         matches.append(match)
 
-    matches.sort(key=lambda x: x["priority"])
+    matches.sort(key=lambda x: x["priority"], reverse=True)
 
     return matches
 
 
-def select_top_matches(limit=40):
+def select_top_matches(limit=40, start_date=None, end_date=None):
 
-    matches = get_candidate_matches()
+    matches = get_candidate_matches(start_date, end_date)
 
     return matches[:limit]
