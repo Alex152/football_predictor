@@ -71,8 +71,11 @@ cursor.execute("""
 
 CREATE TABLE IF NOT EXISTS selected_matches (
 
-fixture_id INTEGER PRIMARY KEY,
-selected_date TEXT
+    fixture_id INTEGER PRIMARY KEY,
+
+    selected_at TEXT,
+    priority_score REAL,
+    status TEXT
 
 )
 
@@ -342,7 +345,7 @@ def save_selected_matches(matches):
         cursor.execute("""
 
         INSERT OR IGNORE INTO selected_matches
-        (fixture_id, selected_at, analysis_status, priority_score)
+        (fixture_id, selected_at, priority_score, status)
 
         VALUES (?, datetime('now'), 'pending', ?)
 
